@@ -166,7 +166,7 @@
         <button class="option" onclick="requirePassword('feature6', 'Poincaré')">爆炸的冲击</button>
         <button class="option" onclick="navigateTo('feature7','每一位贡献者')">新的纪元</button>
         <div class="back-button-container">
-            <button class="back-button" onclick="goBack('previousContainerId')">返回</button>
+            <button class="back-button" onclick="goBack('insidemain')">返回</button>
         </div>
     </div>
     
@@ -235,6 +235,59 @@
     alert("导航到 " + featureId);
 }
 
+
+
+function navigateTo(featureId) {
+    switch(featureId) {
+        case 'feature1':
+        window.location.href = 'features/feature1.html'; // 假设每个功能页面的URL
+            break;
+        case 'feature2':
+            window.location.href = 'feature2.html';
+            break;
+        case 'feature3':
+            window.location.href = 'feature3.html';
+            break;
+        case 'feature4':
+            window.location.href = 'feature4.html';
+            break;
+        case 'feature5':
+            window.location.href = 'feature5.html';
+            break;
+        case 'feature6':
+            window.location.href = 'feature6.html';
+            break;
+        case 'feature7':
+            window.location.href = 'feature7.html';
+            break;
+        default:
+            alert('功能未实现');
+    }
+}
+
+function changeContainer(containerId) {
+        // 之前定义的changeContainer函数，用于激活指定ID的容器
+        const containers = document.querySelectorAll('.container');
+        containers.forEach(container => {
+            container.classList.remove('active');
+        });
+        document.getElementById(containerId).classList.add('active');
+    }
+
+    function showContainerBasedOnQueryString() {
+        // 解析URL查询字符串，并显示相应的容器
+        const params = new URLSearchParams(window.location.search);
+        const view = params.get('view');
+        if (view) {
+            changeContainer(view);
+        }
+    }
+
+    // 直接在<script>标签的末尾调用函数
+    // 这个调用会在浏览器执行到这里时立即运行
+    showContainerBasedOnQueryString();
+
+
 function requirePassword(featureId, expectedPassword) {
     const password = prompt("时代的开创者");
     if (password === expectedPassword) {
@@ -243,7 +296,6 @@ function requirePassword(featureId, expectedPassword) {
         alert("不，不是他");
     }
 }
-
 
 
         function goBack(containerId) {
@@ -257,6 +309,12 @@ function requirePassword(featureId, expectedPassword) {
             });
             document.getElementById(containerId).classList.add('active');
         }
+
+
+
     </script>
+
+
+
 </body>
 </html>
