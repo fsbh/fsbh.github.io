@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature 1 - SCHOLA IRRATIONALIS</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif; /* 古希腊风格的字体选择 */
+            background: linear-gradient(to right, #add8e6, #ffffff); /* 蓝色到白色的背景渐变 */
+            color: #000;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            font-style: italic;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明的白色背景 */
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+        .question {
+            margin: 40px 0;
+            font-style: italic;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            background-color: #0000ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button:hover {
+            background-color: #00008b;
+        }
+        .container, .hidden {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        p {
+            font-family: "Microsoft YaHei", "黑体", "宋体", sans-serif;
+        text-indent: 2em; /* 使用em单位，2em大约等于两个字符的宽度 */
+        font-size: 18px;
+          }
+</style>
+    </style>
+</head>
+
+
+
+<body>
+    <div id="feature1.0" class="container active">
+        <h1>地中海的航线</h1>
+        <p>3000年前，一群年轻人聚集在爱情海的岸边，身为税收官的他们抱怨着自己日复一日的冗杂工作。讨论时，一位智者提出可以将重复的计算抽象为结论。这想法赢得一片叫好，并被赋予μάθημα之名。</p>
+        <p>年轻人们没有料到，他们的无心之举将会为族群，人类乃至整个世界带来多大的灾难。自此之后，人类这一坚毅的生物便带上了名为理性镣铐，拖着笨重的意识直面逻辑。</p>
+        <p>潘多拉魔盒中的苦难尽数被释放。面对隐于高天的强敌，人类并非毫无应对之策。先贤们不断献祭自己的生命与灵魂，筑起巴别高塔，意图与这抽象的异像搏斗，赢取盒底的希望。</p>
+        <p>我们是无理者，我们是披风踏浪的无名者，我们是不死不灭的无理者。</p>
+        <p>无理者无尽，无理者有源。万理归于无，无理自此始。</p>
+
+        <button onclick=" changeContainer('feature1.1')">启航</button>
+       
+    </div>
+
+
+    <div id="feature1.1" class="container">
+        <h1>Θαλῆς</h1>
+        <h2>泰勒斯</h2>
+        <p>
+            泰勒斯，古希腊古风时期的数学家、天文学家，前苏格拉底哲学家，希腊七贤之一。
+        </p>
+        <p>
+            身为第一个用观察和逻辑解释自然现象的人，泰勒斯很早就开始了对灵魂的追问。其曾言，磁铁可以移动铁块是由于磁体含有“灵魂”，而这种“灵魂”存在于整个宇宙中，因为世间万物都是变化的。
+        </p>
+
+        <div class="question">午后四时，直立于地面1腕尺的高的木棍影长2腕尺。金字塔斜面的斜率为1，此时其露出地面的影子长5普拉特隆，则金字塔的高度为多少普拉特隆？</div>
+        <input type="text" id="answer" placeholder="Your answer here">
+        <button onclick="Answer('feature1.2','5')">后者</button>
+        <p id="message"></p>
+        <button onclick="changeContainer('feature1.0')">前者</button>
+        <button onclick="goFirst()">重回起点</button>
+    </div>
+
+
+
+    
+    <div id="feature1.2" class="container">
+        <h1>Πυθαγόρας</h1>
+        <h2>毕达哥拉斯</h2>
+        <p>
+            泰勒斯，古希腊古风时期的数学家、天文学家，前苏格拉底哲学家，希腊七贤之一。
+        </p>
+        <p>
+            身为第一个用观察和逻辑解释自然现象的人，泰勒斯很早就开始了对灵魂的追问。其曾言，磁铁可以移动铁块是由于磁体含有“灵魂”，而这种“灵魂”存在于整个宇宙中，因为世间万物都是变化的。 
+        </p>
+
+        <div class="question">午后四时，直立于地面1腕尺的高的木棍影长2腕尺。金字塔斜面的斜率为1，此时其露出地面的影子长5普拉特隆，则金字塔的高度为多少普拉特隆？</div>
+        <input type="text" id="answer1" placeholder="Your answer here">
+        <button onclick="Answer2()">后者</button>
+        <p id="message"></p>
+        <button onclick="changeContainer('feature1.1')">前者</button>
+        <button onclick="goFirst()">重回起点</button>
+
+    </div>
+
+    
+    <script>
+        function Answer(ContainId,expectedPassword) {
+            const answer = document.getElementById('answer').value;
+            if(answer === expectedPassword) {
+                changeContainer(ContainId);
+            } 
+            else {
+                document.getElementById('message').innerText = '你尚未做好面对下一人的准备';
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        function goFirst() {
+    // 重定向到index.html并附加查询字符串
+    window.location.href = '../index.html?view=insidemain';
+    showContainerBasedOnQueryString();
+}
+
+
+
+
+
+        function changeContainer(containerId) {
+            const containers = document.querySelectorAll('.container');
+            containers.forEach(container => {
+                container.classList.remove('active');
+            });
+            document.getElementById(containerId).classList.add('active');
+        }
+
+
+
+    
+    function changeContainer(containerId) {
+            const containers = document.querySelectorAll('.container');
+                        containers.forEach(container => {
+                container.classList.remove('active');
+            }); 
+            document.getElementById(containerId).classList.add('active');
+        }
+
+
+
+
+    </script>
+</body>
+</html>
