@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<!-- 作者是小白，只会制作静态网页。因此通过查看源码能很快获得问题的答案。但在自己尝试前就看攻略会破坏游戏的趣味性，不是吗？ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCHOLA IRRATIONALIS</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Garamond', serif;
+            text-align: center;
+        }
+        .container, .hidden {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        input, button, .option, .back-button {
+            padding: 10px;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+        }
+        button, .option {
+            cursor: pointer;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 20px;
+        }
+        .option:hover, button:hover, .back-button:hover {
+            background-color: #666;
+        }
+        .choice-container,{
+            display: flex;
+            justify-content: space-around;
+            width: 120%;
+            padding: 20x 0;
+        }
+        .back-button-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 20x 0;
+        }
+        .contact-info p, .contact-info h2, .id-input-container h2, .id-input-container p {
+            h1 {
+  font-size: 32px;
+}
+            margin: 15px 0;
+            font-size: 24px;
+            font-family: 'Times New Roman', serif;
+        }
+        #idMessage {
+            display: none;
+        }
+
+
+        .news-item {
+    border-bottom: 1px solid #666;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+} 
+    </style>
+</head>
+
+<body>
+    <div id="welcomeContainer" class="container active">
+        <h1>Enter your irrational number to continue.</h1>
+        <input type="text" id="irrationalInput" placeholder="Enter irrational numbers combined with integers, +, -, *, /">
+        <button onclick="validateInput()">Continue</button>
+        <p id="message"></p>
+    </div>
+
+    <div id="彩蛋" class="container">
+        <p><h1>你好呀！热情的探索者。如果你能到达这里，说明你一定看过源码了。</h1></p>
+        <p><h1>由于作者是纯粹的代码小白，如果你对网站设计有任何建议，请务必联系我！</h1></p>
+        <p><h1>想和我讨论架空剧情也可以来！</h1></p>
+    </div>
+
+    <div id="choiceContainer" class="container">
+        <div class="choice-container">
+            <div class="option" onclick="selectPath('new_member')">New member</div>
+            <div class="option" onclick="selectPath('loyal_follower')">Loyal follower</div>
+        </div>
+        <div class="back-button-container">
+            <button class="back-button" onclick="goBack('welcomeContainer')">Back</button>
+        </div>
+    </div>
+
+    <div id="idInputContainer" class="container id-input-container">
+        <h2>Enter your member ID</h2>
+        <input type="text" id="memberIDInput" placeholder="Member ID">
+        <button onclick="verifyID()">Submit</button>
+
+
+        <p id="idMessage">Incorrect ID</p>
+
+        <div class="back-button-container">
+            <button class="back-button" onclick="goBack('choiceContainer')">Back</button>
+        </div>
+    </div>
+
+    <div id="contactInfoContainer" class="container contact-info">
+        <h2>Welcome, Our New Member!</h2><br/>
+        <p>If you are from America or Oceania please contact Affine steamed dumplings#3040 via Discord</p><br/>
+        <p>Si vous venez d'Europe ou d'Afrique veuillez contacter via Whatsapp +33 07 57 64 46 64</p><br/>
+        <p>如果您来自亚洲，请联系QQ 2700811981</p><br/>
+        <p>If you have any questions, please contact us via the email: affinetrans@gmail.com</p>
+        <div class="back-button-container">
+            <button class="back-button" onclick="goBack('choiceContainer')">Back</button>
+        </div>
+    </div>
+
+    <div id="insidemain" class="container choice-container">
+        <h1>欢迎您，来自中国的无理者！</h1><br/><br/>
+        <div class="choice-container">
+            <div class="option" onclick="selectPath('news')">新闻·公告</div>
+            <div class="option" onclick="selectPath('mathematicians')">先贤历程</div>
+        </div>
+        <div class="back-button-container">
+            <button class="back-button" onclick="goBack('idInputContainer')">返回</button>
+        </div>
+    </div> 
+
+    <div id="newsContainer" class="container choice-container">
+        <h2>当前新闻</h2>
+        <div class="news-item">
+            <h3>清华大学求真书院举办曲阜祭孔活动</h3>
+            <p>3月31日，清华大学求真书院“求真游目讲座”在山东曲阜尼山讲堂和合堂举办，举行了中国数学先贤们的通灵仪式。</p>
+            <button class="option" onclick="readMore('news1')">阅读更多</button>
+        </div>
+        <div class="news-item">
+            <h3>北回归线南移现象正在加速</h3>
+            <p>据调查显示，最近地球北回归线纬度二阶导恒正，这会对地球的生态造成不可逆的影响。强烈建议引导者们延缓北极点的建设。</p>
+            <button class="option" onclick="readMore('news2')">阅读更多</button>
+        </div>
+
+        <!-- 可以根据需要添加更多新闻项目 -->
+        <div class="back-button-container">
+            <button class="back-button" onclick="goBack('insidemain')">返回</button>
+        </div>
+
+    </div>
+    
+
+
+    <div id="buttonsContainer" class="container">
+        <h1>时空选择</h1>
+        <button class="option" onclick="navigateTo('feature1')">地中海的航线</button>
+        <button class="option" onclick="requirePassword('feature2', 'Gerbert')">中世纪的探索</button>
+        <button class="option" onclick="requirePassword('feature3', '刘洪')">龙的传承</button>
+        <button class="option" onclick="requirePassword('feature4', 'Kepler')">复兴的曙光</button>
+        <button class="option" onclick="requirePassword('feature5', 'Lagrange')">独立的革命</button>
+        <button class="option" onclick="requirePassword('feature6', 'Poincaré')">爆炸的冲击</button>
+        <button class="option" onclick="navigateTo('feature7','每一位贡献者')">新的纪元</button>
+        <div class="back-button-container">
+            <button class="back-button" onclick="goBack('previousContainerId')">返回</button>
+        </div>
+    </div>
+    
+     
+
+    
+
+
+    <script>
+        document.getElementById("irrationalInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                validateInput();
+            }
+        });
+
+        function validateInput() {
+            const input = document.getElementById('irrationalInput').value;
+            if(input === '0/0') {
+                changeContainer('choiceContainer');
+            } 
+            else if (input=== '彩蛋') {
+                changeContainer('彩蛋');
+            }
+            else {
+                document.getElementById('message').innerText = 'Please enter an IRRATIONAL number.';
+            }
+        }
+
+        function selectPath(path) {
+            if (path === 'new_member') {
+                changeContainer('contactInfoContainer');
+            } else if (path === 'loyal_follower') {
+                changeContainer('idInputContainer');
+            }
+            else if (path === 'news') {
+                changeContainer('newsContainer');
+            }
+            else if (path === 'mathematicians') {
+                changeContainer('buttonsContainer');
+            }
+
+            
+        }
+
+
+        document.getElementById("memberIDInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                verifyID();
+            }
+        });
+
+        function verifyID() {
+            const input = document.getElementById('memberIDInput').value;
+            if(input === '文远') {
+                changeContainer('insidemain');
+            } else {
+                document.getElementById('idMessage').style.display = 'block';
+                
+            }
+
+
+        }
+
+        function navigateTo(featureId) {
+    // 根据featureId导航到对应的页面
+    alert("导航到 " + featureId);
+}
+
+function requirePassword(featureId, expectedPassword) {
+    const password = prompt("时代的开创者");
+    if (password === expectedPassword) {
+        navigateTo(featureId);
+    } else {
+        alert("不，不是他");
+    }
+}
+
+
+
+        function goBack(containerId) {
+            changeContainer(containerId);
+        }
+
+        function changeContainer(containerId) {
+            const containers = document.querySelectorAll('.container');
+            containers.forEach(container => {
+                container.classList.remove('active');
+            });
+            document.getElementById(containerId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
