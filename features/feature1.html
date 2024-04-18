@@ -80,7 +80,7 @@
         <h1>Θαλῆς</h1>
         <h2>泰勒斯</h2>
         <p>
-            泰勒斯(626/623–548/545 BC)，古希腊时期的数学家、天文学家，前苏格拉底哲学家，希腊七贤之一。
+            泰勒斯(623–545 BC)，古希腊时期的数学家、天文学家，前苏格拉底哲学家，希腊七贤之一。
         </p>
         <p>
             泰勒斯被现世冠以科学之父的荣誉，赋予先驱者的名号。可事实却截然相反，他扼杀了盛极一时的前古希腊科学，并亲手为后来科学的发展带上枷锁。
@@ -107,9 +107,9 @@
         </p>
 
         <div class="question">午后四时，直立于地面1腕尺的高的木棍影长2腕尺。金字塔斜面的斜率为1，此时其露出地面的影子长5普拉特隆，则金字塔的高度为多少普拉特隆？</div>
-        <input type="text" id="answer" placeholder="Your answer here">
-        <button onclick="Answer('feature1.2','5')">后者</button>
-        <p id="message"></p>
+        <input type="text" id="answer1.1" placeholder="你会如何作答">
+        <button onclick="Answer('feature1.2','5', 'answer1.1','message1.1')">后者</button>
+        <p id="message1.1"></p>
         <button onclick="changeContainer('feature1.0')">前者</button>
         <button onclick="goFirst()">重回起点</button>
     </div>
@@ -121,6 +121,34 @@
         <h1>Πυθαγόρας</h1>
         <h2>毕达哥拉斯</h2>
         <p>
+            毕达哥拉斯（570—495 BC）是"一名"古希腊哲学家、数学家和音乐理论家，毕达哥拉斯主义的创立者。“他”认为数学可以解释世界上的一切事物，对数字痴迷到几近崇拜。
+        </p>
+        <p>
+            泰勒斯富有感染力的学说很快便风靡东地中海地区。人们无法拒绝他那极富魅力的思想，尤其是被其称为数学的学科。
+            他于53岁时在萨摩斯岛发表了一场有关三角学和面积的演讲，吸引了数百学者前来交流。演讲过后，一群自称为“来自德尔斐的演讲者”的年轻人发起了提问。
+        </p>
+        <p>
+            “泰勒斯先生，您认为世界的本质是灵魂？而”
+        </p>
+        <p>
+            博学如泰勒斯，也无法在第一
+        </p>
+
+
+        <div class="question">比1/3大而比2/5小的分母最小有理数是多少？</div>
+        <input type="text" id="answer1.2" placeholder="你会如何作答">
+        <button onclick="Answer('feature1.3','3/8', 'answer1.2','message1.2')">后者</button>
+        <p id="message1.2"></p>
+        <button onclick="changeContainer('feature1.1')">前者</button>
+        <button onclick="goFirst()">重回起点</button>
+
+    </div>
+
+
+    <div id="feature1.3" class="container">
+        <h1>Πυθαγόρας</h1>
+        <h2>泰阿泰德</h2>
+        <p>
             
         </p>
         <p>
@@ -128,25 +156,25 @@
         </p>
 
         <div class="question">比1/3大而比2/5小的分母最小有理数是多少？</div>
-        <input type="text" id="answer1" placeholder="Your answer here">
-        <button onclick="Answer2()">后者</button>
+        <input type="text" id="answer" placeholder="你会如何作答">
+        <button onclick="Answer('feature1.3','3/8')">后者</button>
         <p id="message"></p>
-        <button onclick="changeContainer('feature1.1')">前者</button>
+        <button onclick="changeContainer('feature1.2')">前者</button>
         <button onclick="goFirst()">重回起点</button>
 
     </div>
 
     
     <script>
-        function Answer(ContainId,expectedPassword) {
-            const answer = document.getElementById('answer').value;
-            if(answer === expectedPassword) {
-                changeContainer(ContainId);
-            } 
-            else {
-                document.getElementById('message').innerText = '你尚未做好面对下一人的准备';
-            }
-        }
+function Answer(containerId, expectedPassword, inputId, messageId) {
+    const answer = document.getElementById(inputId).value;
+    const messageElement = document.getElementById(messageId);
+    if (answer === expectedPassword) {
+        changeContainer(containerId);
+    } else {
+        messageElement.innerText = '你尚未做好面对下一人的准备';
+    }
+}
 
 
 
@@ -194,4 +222,3 @@
     </script>
 </body>
 </html>
-
